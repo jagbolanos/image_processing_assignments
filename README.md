@@ -1,8 +1,10 @@
 week 1
 ======
 
->> image=imread('explosion.jpg');
->> imagengray = rgb2gray(image);
+```
+image=imread('explosion.jpg');
+imagengray = rgb2gray(image);
+```
 
 1. 
 >> new_image=reduce_intensity(imagengray, 128);
