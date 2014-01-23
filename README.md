@@ -20,6 +20,14 @@ imshow(new_image);
 ```
 
 #### Problem 3
+
+###### Custom function
+```
+new_image=rotate_image(imagengray, 3.1416 / 2);
+imshow(new_image);
+```
+
+###### Using just Matlab
 ```
 new_image=imrotate(imagengray,45);
 imshow(new_image);
