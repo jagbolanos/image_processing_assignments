@@ -1,4 +1,5 @@
-function new_image = jpegcompress(image, block_size, N)
+function new_image = jpegcompressfft(image)
+    block_size = 8;
     [width, height] = size(image);
     b_width = floor(width / block_size);
     b_height = floor(height / block_size);
@@ -17,10 +18,8 @@ function new_image = jpegcompress(image, block_size, N)
         for y = 1:b_height
             %Extract the block
             block = image((x-1)*block_size+1:x*block_size,(y-1)*block_size+1:y*block_size);
-            %DCT
-            dct_block = dct(block);
-            
-            %dct_block = floor(dct_block / N) * N;
+            %FFT
+            dct_block = fft(block);
             
             %Quantization
             dct_block = round(dct_block ./ quantization_matrix);
@@ -28,8 +27,8 @@ function new_image = jpegcompress(image, block_size, N)
             %Dequantization
             idct_block = dct_block .* quantization_matrix;
             
-            %Inverse DCT
-            new_block = idct(idct_block);
+            %Inverse FFT
+            new_block = real(ifft(idct_block));
             %Put the new block
             new_image((x-1)*block_size+1:x*block_size,(y-1)*block_size+1:y*block_size) = new_block;
         end
