@@ -43,6 +43,8 @@ Week 2
 ========
 
 #### Problem 1
+
+###### DCT+Quantization Table 8x8 - RGB and Grayscale
 ```
 new_image = jpegcompress(image);
 imshow(new_image);
@@ -51,7 +53,7 @@ new_image = jpegcompress(imagengray);
 imshow(new_image);
 ```
 
-###### FFT
+###### FFT+Quantization Table 8x8 - Grayscale
 ```
 new_image = jpegcompressfft(imagengray);
 imshow(new_image);
