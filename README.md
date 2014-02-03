@@ -38,3 +38,22 @@ imshow(new_image);
 new_image=reduce_image_size(imagengray, 4);
 imshow(new_image);
 ```
+
+Week 2
+========
+
+#### Problem 1
+```
+new_image = jpegcompress(image);
+imshow(new_image);
+
+new_image = jpegcompress(imagengray);
+imshow(new_image);
+```
+
+###### FFT
+```
+new_image = jpegcompressfft(imagengray);
+imshow(new_image);
+```
+
