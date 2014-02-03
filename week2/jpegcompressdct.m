@@ -34,5 +34,5 @@ function new_image = jpegcompressdct(image)
         end
     end
     
-    new_image = mat2gray(new_image);
+    %new_image = mat2gray(new_image);
 end
