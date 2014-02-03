@@ -1,4 +1,4 @@
-function new_image = jpegcompressdct(image)
+function new_image = jpegcompressdct(image, ratio)
     block_size = 8;
     [width, height] = size(image);
     b_width = floor(width / block_size);
@@ -22,10 +22,10 @@ function new_image = jpegcompressdct(image)
             dct_block = dct(block);
             
             %Quantization
-            dct_block = round(dct_block ./ quantization_matrix);
+            dct_block = round(dct_block ./ (quantization_matrix * ratio));
             
             %Dequantization
-            idct_block = dct_block .* quantization_matrix;
+            idct_block = dct_block .* (quantization_matrix * ratio);
             
             %Inverse DCT
             new_block = idct(idct_block);
