@@ -19,11 +19,17 @@ function new_image = jpegcompress(image, block_size, N)
             block = image((x-1)*block_size+1:x*block_size,(y-1)*block_size+1:y*block_size);
             %DCT
             dct_block = dct(block);
-            %Quantize and Dequantize
+            
             %dct_block = floor(dct_block / N) * N;
-            dct_block = round(dct_block ./ quantization_matrix) .* quantization_matrix;
+            
+            %Quantization
+            dct_block = round(dct_block ./ quantization_matrix);
+            
+            %Dequantization
+            idct_block = dct_block .* quantization_matrix;
+            
             %Inverse DCT
-            new_block = idct(dct_block);
+            new_block = idct(idct_block);
             %Put the new block
             new_image((x-1)*block_size+1:x*block_size,(y-1)*block_size+1:y*block_size) = new_block;
         end
